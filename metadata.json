@@ -1,0 +1,5 @@
+{
+  "name": "Matic",
+  "description": "Experience the future of dictation with Matic. Fast, accurate, and beautifully designed transcription powered by Gemini.",
+  "requestFramePermissions": ["microphone"]
+}

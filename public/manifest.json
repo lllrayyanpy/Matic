@@ -1,0 +1,16 @@
+{
+  "short_name": "Matic",
+  "name": "Matic - Premium Dictation",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/5988/5988532.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0a0a0c",
+  "background_color": "#0a0a0c"
+}
