@@ -6,7 +6,7 @@
 
 This contains everything you need to run your app locally.
 
-View your app in AI Studio: https://ai.studio/apps/528e025c-f951-46a9-a6d5-40094164caab
+View the app :https://matic-eight.vercel.app/
 
 ## Run Locally
 
