@@ -16,14 +16,29 @@ service cloud.firestore {
              data.userId == request.auth.uid &&
              data.createdAt is string &&
              data.status in ['active', 'archived'] &&
-             (!('archivedAt' in data) || data.archivedAt is string);
+             (!('archivedAt' in data) || data.archivedAt is string) &&
+             (!('audioUrl' in data) || data.audioUrl is string);
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['email', 'transcriptionCount', 'subscriptionTier', 'createdAt']) &&
+             data.email is string &&
+             data.transcriptionCount is number &&
+             data.subscriptionTier in ['free', 'pro'] &&
+             data.createdAt is string;
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidUser(request.resource.data);
+      allow update: if isOwner(userId) && isValidUser(request.resource.data);
     }
 
     match /transcriptions/{transcriptionId} {
       allow read: if isOwner(resource.data.userId);
       allow create: if isAuthenticated() && isValidTranscription(request.resource.data);
       allow update: if isOwner(resource.data.userId) && isValidTranscription(request.resource.data);
-      allow delete: if isOwner(resource.data.userId); // Keep delete for permanent removal if needed
+      allow delete: if isOwner(resource.data.userId);
     }
   }
 }
