@@ -177,29 +177,29 @@ export default function App() {
       }
     } catch (err: any) {
       console.error('Auth error:', err.code, err.message);
-      let errorMessage = 'حدث خطأ ما، يرجى المحاولة مرة أخرى.';
+      let errorMessage = 'An unexpected error occurred. Please try again.';
       
       switch (err.code) {
         case 'auth/wrong-password':
-          errorMessage = 'كلمة المرور التي أدخلتها غير صحيحة.';
+          errorMessage = 'The password you entered is incorrect.';
           break;
         case 'auth/user-not-found':
-          errorMessage = 'لا يوجد حساب مسجل بهذا البريد الإلكتروني.';
+          errorMessage = 'No account found with this email address.';
           break;
         case 'auth/invalid-email':
-          errorMessage = 'صيغة البريد الإلكتروني غير صحيحة.';
+          errorMessage = 'The email address is invalid.';
           break;
         case 'auth/email-already-in-use':
-          errorMessage = 'هذا البريد الإلكتروني مستخدم بالفعل في حساب آخر.';
+          errorMessage = 'This email is already in use by another account.';
           break;
         case 'auth/weak-password':
-          errorMessage = 'كلمة المرور ضعيفة جداً، يرجى اختيار كلمة أقوى.';
+          errorMessage = 'The password is too weak. Please choose a stronger one.';
           break;
         case 'auth/invalid-credential':
-          errorMessage = 'بيانات الدخول غير صحيحة (البريد أو كلمة المرور).';
+          errorMessage = 'Invalid login credentials (email or password).';
           break;
         case 'auth/too-many-requests':
-          errorMessage = 'تم حظر المحاولات مؤقتاً بسبب كثرة الطلبات، حاول لاحقاً.';
+          errorMessage = 'Too many failed attempts. Please try again later.';
           break;
       }
       setError(errorMessage);
